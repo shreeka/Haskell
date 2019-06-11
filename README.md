@@ -1,2 +1,2 @@
 # Haskell
-Haskell Assignments
+Practice Repo for Haskell Assignments 
