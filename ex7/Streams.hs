@@ -61,12 +61,12 @@ instance (Ord elem, Num elem) => Num (Stream elem) where
     signum (Cons x xs) | (x < 0) = -1 .: signum xs
                        | (x == 0) = 0 .: signum xs
                        | otherwise   = 1 .: signum xs
-    fromInteger n = undefined
+    fromInteger n = fromInteger n .: fromInteger n
 
 
-nat, ﬁb :: Stream Integer
+nat, fib :: Stream Integer
 nat = 0 .: nat + 1
-ﬁb = 0 .: 1 .: ﬁb + tail ﬁb
+fib = 0 .: 1 .: fib + tail fib
 
 
 ---------------------------------------------------------------------
