@@ -61,7 +61,12 @@ instance (Ord elem, Num elem) => Num (Stream elem) where
     signum (Cons x xs) | (x < 0) = -1 .: signum xs
                        | (x == 0) = 0 .: signum xs
                        | otherwise   = 1 .: signum xs
-    fromInteger n = n .: 1 
+    fromInteger n = undefined
+
+
+nat, ﬁb :: Stream Integer
+nat = 0 .: nat + 1
+ﬁb = 0 .: 1 .: ﬁb + tail ﬁb
 
 
 ---------------------------------------------------------------------
@@ -74,12 +79,12 @@ take = undefined
 -- d)
 
 -- The given function:
---diff :: Num elem => Stream elem -> Stream elem
---diff s = tail s - s
+diff :: (Ord elem, Num elem) => Stream elem -> Stream elem
+diff s = tail s - s
 
 -- The function you should implement:
-sum :: Num elem => Stream elem -> Stream elem
-sum = undefined
+sum :: (Ord elem, Num elem) => Stream elem -> Stream elem
+sum s = 0 .: sum s + s
 
 -- Specification: diff (sum s) = s and head (sum s) = 0
 
